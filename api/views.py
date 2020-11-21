@@ -20,15 +20,15 @@ class CommentAPI(viewsets.ModelViewSet):
         activity_type = request.data["activity_type"]
 
         if activity_type == "C":
-            comment = Comment.objects.get(essence["id"])
+            comment = Comment.objects.get(id=essence["id"])
             comments = comment.comment.all()
 
         elif activity_type == "P":
-            post = Post.objects.get(essence["id"])
+            post = Post.objects.get(id=essence["id"])
             comments = post.comment.all()
 
         elif activity_type == "U":
-            userpage = UserPage.objects.get(essence["id"])
+            userpage = UserPage.objects.get(id=essence["id"])
             comments = userpage.comment.all()
 
         else:
@@ -91,15 +91,15 @@ class CommentAPI(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
 
             if activity_type == "C":
-                comment = Comment.objects.get(essence["id"])
+                comment = Comment.objects.get(id=essence["id"])
                 comment.comment.create(activity_type=activity_type, user=user)
 
             elif activity_type == "P":
-                post = Post.objects.get(essence["id"])
+                post = Post.objects.get(id=essence["id"])
                 post.comment.create(activity_type=activity_type, user=user)
 
             elif activity_type == "U":
-                userpage = UserPage.objects.get(essence["id"])
+                userpage = UserPage.objects.get(id=essence["id"])
                 userpage.comment.create(activity_type=activity_type, user=user)
 
             self.perform_create(serializer)
@@ -122,7 +122,7 @@ class CommentAPI(viewsets.ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         comment = get_object_or_404(Comment, pk=request.data["comment"]["id"])
-        if post.likes.count() == 0:
+        if comment.commet.count() == 0:
             comment.delete()
             return Response("Comment deleted", status=status.HTTP_204_NO_CONTENT)
         return Response("comment have child comments", status=status.HTTP_406_NOT_ACCEPTABLE)
