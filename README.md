@@ -21,7 +21,7 @@ Make sure that you've installed it properly from https://docs.docker.com/compose
 Clone it!
 
 ```
-$ git clone https://github.com/rruss/Simple-ToDo-App
+$ git clone https://github.com/rruss/Comments-API
 ```
 
 
