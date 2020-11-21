@@ -4,7 +4,7 @@ Commentig Backend Service
 What can this app do?
 - Creating comments
 - Altering comments
-- View with pagination
+- View with pagination(by default 10 objects)
 - Listing comments for provided essence
 
 
