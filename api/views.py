@@ -122,7 +122,7 @@ class CommentAPI(viewsets.ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         comment = get_object_or_404(Comment, pk=request.data["comment"]["id"])
-        if comment.commet.count() == 0:
+        if comment.comment.count() == 0:
             comment.delete()
             return Response("Comment deleted", status=status.HTTP_204_NO_CONTENT)
         return Response("comment have child comments", status=status.HTTP_406_NOT_ACCEPTABLE)
